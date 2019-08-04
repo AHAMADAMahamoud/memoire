@@ -1,0 +1,14 @@
+com\kmsoft\memoire\alimentation\dw\model\Vente.class
+com\kmsoft\memoire\alimentation\dw\service\Extractor.class
+com\kmsoft\memoire\alimentation\dw\model\AbstractEntity.class
+com\kmsoft\memoire\alimentation\dw\model\Categorie.class
+com\kmsoft\memoire\alimentation\dw\model\Geographie.class
+com\kmsoft\memoire\alimentation\dw\repository\AbstractRepository.class
+com\kmsoft\memoire\alimentation\dw\repository\IArticleRepository.class
+com\kmsoft\memoire\alimentation\dw\config\JpaConfig.class
+com\kmsoft\memoire\alimentation\dw\repository\ArticleRepository.class
+com\kmsoft\memoire\alimentation\dw\service\Loader.class
+com\kmsoft\memoire\alimentation\dw\service\Traitement.class
+com\kmsoft\memoire\alimentation\dw\model\Temps.class
+com\kmsoft\memoire\alimentation\dw\config\ApplicationConfig.class
+com\kmsoft\memoire\alimentation\dw\model\Article.class
