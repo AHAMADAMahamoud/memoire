@@ -1,6 +1,7 @@
 package com.kmsoft.memoire.interpreteur.analyseur;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -25,8 +26,9 @@ public class RequetteAnalyseur {
 	}
 
 	public List<String> findEquivalanceMots(String requetteFr) {
+		
 		List<String> motsRequette = new ArrayList<>();
-		String[] mots=this.motsRequette(requetteFr);
+		String[] mots=this.motsRequette(netoyerRequete(requetteFr));
 		List<String> lesTables=this.listeDesTables();
 		
 		
@@ -36,8 +38,9 @@ public class RequetteAnalyseur {
 			for (String mot : mots) {
 				
 				for (Pair<String, String> couplemotsDansDico : dictionaire) {
-					if (mot.equals(couplemotsDansDico.getRight())) {
+					if (mot.equalsIgnoreCase(couplemotsDansDico.getRight())) {
 						motsRequette.add(couplemotsDansDico.getLeft());
+						break;
 					}
 				}
 				
@@ -45,17 +48,30 @@ public class RequetteAnalyseur {
 			
 			for(String mot: mots){
 				for(String table:lesTables){
-					if(table.equalsIgnoreCase(mot)){
-						motsRequette.add(table);
-					}else if(mot.charAt(mot.length()-1)=='s'||mot.charAt(mot.length()-1)=='S'){
-						if(table.equalsIgnoreCase(mot.substring(0, mot.length()-1))){
-							motsRequette.add(table);
-						}
+					if(mot.toLowerCase().contains(table.toLowerCase())){
+						
+						motsRequette.add(new StringBuilder("FROM ").append(table).toString());
+						break;
 					}
 				}
 			}
 		}
 		return motsRequette;
+	}
+
+	private String netoyerRequete(String requetteFr) {
+		for(String mot:requetteFr.split(" ")) {
+			if(getMotsNonUtiliser().contains(mot)) {
+				return new String(requetteFr.replaceFirst(mot, "").replace("  ", " "));
+			}
+		}
+		return requetteFr;
+		
+	}
+
+	private List<String> getMotsNonUtiliser() {
+		String[] mots= {"le", "la", "les","de", "des"};
+		return Arrays.asList(mots);
 	}
 
 	private List<String> listeDesTables(){
@@ -92,5 +108,15 @@ public class RequetteAnalyseur {
 
 		//
 
+	}
+
+	public String getRequest(List<String> list) {
+		StringBuilder request = new StringBuilder();
+		for (String mot : list) {
+			request.append(mot).append(" ");
+		}
+		request = new StringBuilder(request.toString().trim()).append(";");
+		return request.toString();
+		
 	}
 }

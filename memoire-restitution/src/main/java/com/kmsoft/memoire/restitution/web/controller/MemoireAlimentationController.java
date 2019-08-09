@@ -42,10 +42,12 @@ public class MemoireAlimentationController {
 		return "alimentation";
 	}
 
-	@RequestMapping(value = "/run_etl", method = RequestMethod.POST)
-	public String add(@RequestParam("directory") String repertoireSource, Model model) {
+	@RequestMapping(value = "/run_fact", method = RequestMethod.POST)
+	public String chargerFait(@RequestParam("directory") String repertoireSource, Model model) {
+		String message = "Opération echoué";
+		String info = "Erreur : ";
 		if (repertoireSource.length() > 5) {
-			String message = "";
+
 			List<String> fichierSources = new ArrayList<>();
 			try (Stream<Path> paths = Files.walk(Paths.get(repertoireSource))) {
 				paths.forEach(filePath -> {
@@ -55,9 +57,56 @@ public class MemoireAlimentationController {
 				});
 			} catch (IOException e) {
 				e.printStackTrace();
-				message = "error";
 			}
-			if (message.isEmpty()) {
+			if (!repertoireSource.isEmpty()) {
+				for (String fichier : fichierSources) {
+					if (this.isFileCorrect(fichier)) {
+						if (fichier.contains("fait")) {
+							message = this.etl.saveDataforDimVente(fichier);
+						}
+					} else {
+						message = "Fichier incorrect";
+					}
+				}
+			}
+			String repertoireSource1 = appConfig.getDossier();
+			model.addAttribute("dossier", repertoireSource1);
+
+		} else
+
+		{
+			message = "Vous devez spécifier un répertoire!";
+		}
+		model.addAttribute("msg", "Chargement des dimensions");
+		if (!message.contains("echou")||!message.contains("incorrect")) {
+			info = "Bien joué : ";
+			model.addAttribute("class_info", "alert-success");
+		}else{
+			model.addAttribute("class_info", "alert-error");
+		}
+		model.addAttribute("info", info);
+		model.addAttribute("info_suite", message);
+		return "alimentation";
+
+	}
+
+	@RequestMapping(value = "/run_dimension", method = RequestMethod.POST)
+	public String chargeDimension(@RequestParam("directory") String repertoireSource, Model model) {
+		String message = "Opération echoué";
+		String info = "Erreur : ";
+		if (repertoireSource.length() > 5) {
+
+			List<String> fichierSources = new ArrayList<>();
+			try (Stream<Path> paths = Files.walk(Paths.get(repertoireSource))) {
+				paths.forEach(filePath -> {
+					if (Files.isRegularFile(filePath)) {
+						fichierSources.add(filePath.toAbsolutePath().toString());
+					}
+				});
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if (!fichierSources.isEmpty()) {
 				for (String fichier : fichierSources) {
 					if (this.isFileCorrect(fichier)) {
 						if (fichier.contains("dim")) {
@@ -74,27 +123,32 @@ public class MemoireAlimentationController {
 							if (fichier.contains("temp")) {
 								message = this.etl.saveDataforDimTemps(fichier);
 							}
-						} else {
-							message = this.etl.saveDataforDimVente(fichier);
-
 						}
 					} else {
-						message = "Erreur: Fichier incorrect";
+						message = "Fichier incorrect";
 					}
 				}
 			}
 			String repertoireSource1 = appConfig.getDossier();
 			model.addAttribute("dossier", repertoireSource1);
-			model.addAttribute("info", message);
-		} else
 
+		} else
 		{
-			model.addAttribute("info", "Erreur: Vous devez spécifier un répertoire!");
+			message = "Vous devez spécifier un répertoire!";
 		}
 		model.addAttribute("msg", "Chargement des dimensions");
+		if (!message.contains("echou")||!message.contains("incorrect")) {
+			info = "Bien joué : ";
+			model.addAttribute("class_info", "alert-success");
+		}else{
+			model.addAttribute("class_info", "alert-error");
+		}
+		model.addAttribute("info", info);
+		model.addAttribute("info_suite", message);
 		return "alimentation";
 
 	}
+
 	//
 	// @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	// public String editFrm(Model model, @PathVariable("id") Long id) {
@@ -111,16 +165,16 @@ public class MemoireAlimentationController {
 	// }
 
 	private boolean isFileCorrect(String fichier) {
-		if(fichier!=null){
-			final List<String> lesExtensions=appConfig.getextensionAuthorise();
-			final String ext=fichier.substring(fichier.indexOf('.')+1);
-			if(lesExtensions.contains(ext)){
+		if (fichier != null) {
+			final List<String> lesExtensions = appConfig.getextensionAuthorise();
+			final String ext = fichier.substring(fichier.indexOf('.') + 1);
+			if (lesExtensions.contains(ext)) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
-		
-		}else{
+
+		} else {
 			return false;
 		}
 	}

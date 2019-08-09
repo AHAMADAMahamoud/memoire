@@ -19,7 +19,6 @@ public class MemoireRequeteController {
 
 	@Autowired
 	RequeteService requeteServ;
-	private List<Requette> data = new ArrayList<>();
 
 	/**
 	 * Constructor for main controller
@@ -32,6 +31,23 @@ public class MemoireRequeteController {
 	@RequestMapping(value = "/open_accueil_requette", method = RequestMethod.GET)
 	public String ouvreAccueilRequette(Model model) {
 		model.addAttribute("msg", "Gestion des requêtes");
+		model.addAttribute("listrequete", this.requeteServ.listerRequete());
+		
+		return "requete";
+	}
+
+	@RequestMapping(value = "/load_default_request", method = RequestMethod.GET)
+	public String chargerRequete(Model model) {
+
+		String message=requeteServ.chargerDansLaBase();
+		model.addAttribute("msg", "Gestion des requêtes");
+
+		model.addAttribute("class_info", "alert-success");
+
+		model.addAttribute("info", "Bien joué :");
+		model.addAttribute("info_suite", message);
+		model.addAttribute("listrequete", this.requeteServ.listerRequete());
+		
 		return "requete";
 	}
 
@@ -48,7 +64,7 @@ public class MemoireRequeteController {
 
 		// iterate a list and filter by RequetteName
 		for (Requette requette : requeteServ.recupererLesRequetteParDefaut()) {
-			if ( this.containsIgnoreCase(requette.getRequetteFr(),requettecharcter)) {
+			if (this.containsIgnoreCase(requette.getRequetteFr(), requettecharcter)) {
 				result.add(requette);
 			}
 		}
@@ -57,7 +73,7 @@ public class MemoireRequeteController {
 	}
 
 	private boolean containsIgnoreCase(String requetteFr, String requettecharcter) {
-		
+
 		if (requetteFr.toLowerCase().contains(requettecharcter.toLowerCase())) {
 			return true;
 		}

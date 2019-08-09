@@ -1,3 +1,24 @@
-<p align="center"><em>Copyright 2017</em></p>
+
+<div class="footer">
+	<div class="footer-left">
+		<span>&copy; 2017. Komocach Admin Panel. All Rights Reserved.</span>
+	</div>
+	<div class="footer-right">
+		<span>Designed by: <a href="http://comoressoft.com/">ComoresSoft</a></span>
+	</div>
+</div>
+
+<!--footer-->
+</div>
+<!--maincontentinner-->
+</div>
+<!--maincontent-->
+
+</div>
+<!--rightpanel-->
+
+</div>
+<!--mainwrapper-->
+
 </body>
 </html>

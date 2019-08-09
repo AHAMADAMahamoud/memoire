@@ -5,13 +5,18 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+
+import javax.annotation.PostConstruct;
+
 import java.util.Properties;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+
 public class ChargeDictionnaire {
 
 	private static String CHEMIN_DICTIONNAIRE = "dictionnaire_mots.properties";
+	private static String CHEMIN_MOTS_COMPOSE = "dictionnaire_mots_compose.properties";
 	private Properties properties;
 
 	public ChargeDictionnaire() {
@@ -36,5 +41,22 @@ public class ChargeDictionnaire {
 			e.printStackTrace();
 		}
 		return listeDesMots;
+	}
+	public List<String> chargerMotscompose() {
+		List<String>listeDesMotsCompos =new ArrayList<>();
+			try (InputStream is = ChargeDictionnaire.class.getClassLoader().getResourceAsStream(CHEMIN_MOTS_COMPOSE)) {
+				properties = new Properties();
+				properties.load(is);
+				
+				for (String key : properties.stringPropertyNames()) {
+		            String value = properties.getProperty(key);
+		            listeDesMotsCompos.add(value);
+		        }
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		
+		return listeDesMotsCompos;
 	}
 }

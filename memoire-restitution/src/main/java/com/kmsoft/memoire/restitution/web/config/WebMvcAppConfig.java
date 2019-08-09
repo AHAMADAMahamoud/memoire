@@ -27,7 +27,6 @@ public class WebMvcAppConfig extends WebMvcConfigurerAdapter {
 
 	/**
 	 * Constructor
-	 *
 	 */
 	public WebMvcAppConfig() {
 		super();
@@ -62,10 +61,11 @@ public class WebMvcAppConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/ressources/**").addResourceLocations("/ressources/");
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 
 	/**
-	 * Load Swagger properties
+	 * Load  properties
 	 * 
 	 * @return The property placeholder configurer bean
 	 */

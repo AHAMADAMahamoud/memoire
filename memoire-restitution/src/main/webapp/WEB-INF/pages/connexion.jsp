@@ -7,8 +7,6 @@
 <link href="${designeCSS}" rel="stylesheet" />
 <link href="${signinCSS}" rel="stylesheet" />
 
-
-
 <!-- /container -->
 <br>
 <br>

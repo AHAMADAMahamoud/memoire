@@ -1,5 +1,8 @@
 package com.kmsoft.memoire.requete.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Utilisateur extends AbstractEntity{
 
 	private String nom;
