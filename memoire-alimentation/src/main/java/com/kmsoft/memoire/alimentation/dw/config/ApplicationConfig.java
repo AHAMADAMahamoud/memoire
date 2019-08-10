@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @PropertySource("classpath:fichier_des_constants.properties")
 //@ComponentScan("com.kmsoft.memoire")
 @EnableScheduling
-@Import(JpaConfig.class)
 public class ApplicationConfig {
 
 	@Value("${dossier_fichier_chargement}")

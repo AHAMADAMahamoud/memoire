@@ -38,7 +38,7 @@ public class UserTokenRepository implements PersistentTokenRepository {
 		logger.info("Fetch Token if any for seriesId : {}", seriesId);
 		try {
 
-			UserPersistentLogin persistentLogin = persistentLoginRepo.findOne(seriesId);
+			UserPersistentLogin persistentLogin = persistentLoginRepo.findById(seriesId).get();
 
 			return new PersistentRememberMeToken(persistentLogin.getUsername(), persistentLogin.getSeries(),
 					persistentLogin.getToken(), persistentLogin.getLast_used());
