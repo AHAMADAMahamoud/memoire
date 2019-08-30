@@ -17,4 +17,5 @@ public class MemoirMainApplication extends SpringBootServletInitializer {
 		SpringApplication.run(MemoirMainApplication.class, args);
 	}
 
+	
 }
