@@ -16,46 +16,52 @@
 
 </head>
 <body>
-<div class="container">
-	
-	
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container">
-   <a class="navbar-brand" href="#">ComoresSoft : </a>
-   
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">${username}
-                <span class="sr-only">(current)</span>
-              </a>
-        </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
+	<div class="container">
 
-	
 
-<div class="leftmenu">
-		<ul class="nav nav-tabs nav-stacked">
-			<li class="nav-header">Navigation</li>
-			<li class="active"><a href="<%= request.getContextPath() %>/accueil"><span
-					class="iconfa-laptop"></span> Accueil</a></li>
-			<li><a href="open_etl_dimension"><span
-					class="iconfa-briefcase"></span> Alimentation de l'entrepot</a></li>
-			<li><a href="open_accueil_requette"><span
-					class="iconfa-th-list"></span> Gestion des requêtes</a></li>
-			<li><a href="open_accueil_restitution"><span
-					class="iconfa-signal"></span> Reporting Managment</a></li>
-			<li><a href="open_parametre"><span class="iconfa-book"></span>
-					Parametrages</a></li>
-		</ul>
-	</div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+			<div class="container">
+				<a class="navbar-brand" href="#">ComoresSoft </a>
+
+
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="#">User
+								: ${username} <span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Logout</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+
+<br><br>
+
+
+
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item list-group-item-action active">
+						Navigation </a> <a href="#"
+						class="list-group-item list-group-item-action">Alimentation de
+						l'entrepot</a> <a href="#"
+						class="list-group-item list-group-item-action">Gestion des
+						requêtes</a> <a href="#"
+						class="list-group-item list-group-item-action">Reporting
+						Managment</a> <a href="#"
+						class="list-group-item list-group-item-action disabled">Vestibulum
+						at eros</a>
+				</div>
+			</div>
+			<div class="col-sm-8">col-sm-8</div>
+
+		</div>
+
 
 
 
