@@ -13,13 +13,13 @@
 <link rel="stylesheet" href="<c:url value="ressources/css/style.shinyblue.css" />" type="text/css" />
 <c:url value="/ressources/images/logo.png" var="imglogo" />
 
-<script type="text/javascript" src="/ressources/js/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="/ressources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/ressources/js/jquery-migrate-1.1.1.min.js"></script>
 <script type="text/javascript" src="/ressources/js/jquery-ui-1.9.2.min.js"></script>
 <script type="text/javascript" src="/ressources/js/modernizr.min.js"></script>
 <script type="text/javascript" src="/ressources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/ressources/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="/ressources/js/custom.js"></script>
+<script type="text/javascript" src="/ressources/js/custom.js"></script> -->
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#login').submit(function() {
@@ -84,7 +84,7 @@
 	<!--loginpanel-->
 
 	<div class="loginfooter">
-		<p>&copy; 2018. KM-Panel KomoCash All Rights Reserved.</p>
+		<p>&copy; 2019. KM-Panel KomoCash All Rights Reserved.</p>
 	</div>
 
 </body>
