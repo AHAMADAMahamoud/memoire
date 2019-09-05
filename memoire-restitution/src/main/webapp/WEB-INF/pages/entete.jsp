@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<%-- <c:url value="/ressources/css/style.default.css" var="css1" />
+<c:url value="/ressources/css/style.default.css" var="css1" />
 <c:url value="/ressources/css/responsive-tables.css" var="css2" />
 
 <c:url value="/ressources/js/jquery-1.9.1.min.js" var="js1" />
@@ -21,7 +21,7 @@
 <c:url value="/ressources/js/jquery.uniform.min.js" var="js7" />
 <c:url value="/ressources/js/flot/jquery.flot.min.js" var="js8" />
 <c:url value="/ressources/js/flot/jquery.flot.resize.min.js" var="js9" />
-<c:url value="/ressources/js/responsive-tables.js" var="js10" />--%>
+<c:url value="/ressources/js/responsive-tables.js" var="js10" />
 <c:url value="/ressources/js/custom.js" var="js11" />
 <c:url value="/ressources/js/jquery.smartWizard.min.js" var="js12" /> 
 

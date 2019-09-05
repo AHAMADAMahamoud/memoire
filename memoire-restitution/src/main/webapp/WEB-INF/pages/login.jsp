@@ -84,7 +84,7 @@
 	<!--loginpanel-->
 
 	<div class="loginfooter">
-		<p>&copy; 2018. KM-Panel KomoCash All Rights Reserved.</p>
+		<p>&copy; 2019. KM-Panel KomoCash All Rights Reserved.</p>
 	</div>
 
 </body>
