@@ -10,7 +10,8 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmsoft.memoire.alimentation.dw.model.UserPersistentLogin;
+import com.kmsoft.memoire.restitution.web.model.UsersPersistentLogin;
+
 
 @Repository("tokenRepositoryDao")
 @Transactional
@@ -24,7 +25,7 @@ public class UserTokenRepository implements PersistentTokenRepository {
 	@Override
 	public void createNewToken(PersistentRememberMeToken token) {
 		logger.info("Creating Token for user : {}", token.getUsername());
-		UserPersistentLogin persistentLogin = new UserPersistentLogin();
+		UsersPersistentLogin persistentLogin = new UsersPersistentLogin();
 		persistentLogin.setUsername(token.getUsername());
 		persistentLogin.setSeries(token.getSeries());
 		persistentLogin.setToken(token.getTokenValue());
@@ -38,7 +39,7 @@ public class UserTokenRepository implements PersistentTokenRepository {
 		logger.info("Fetch Token if any for seriesId : {}", seriesId);
 		try {
 
-			UserPersistentLogin persistentLogin = persistentLoginRepo.findById(seriesId).get();
+			UsersPersistentLogin persistentLogin = persistentLoginRepo.findById(seriesId).get();
 
 			return new PersistentRememberMeToken(persistentLogin.getUsername(), persistentLogin.getSeries(),
 					persistentLogin.getToken(), persistentLogin.getLast_used());
@@ -57,7 +58,7 @@ public class UserTokenRepository implements PersistentTokenRepository {
 
 	@Override
 	public void updateToken(String seriesId, String tokenValue, Date lastUsed) {
-		UserPersistentLogin persistentLogin = new UserPersistentLogin();
+		UsersPersistentLogin persistentLogin = new UsersPersistentLogin();
 		persistentLogin.setSeries(seriesId);
 		persistentLogin.setToken(tokenValue);
 		persistentLogin.setLast_used(lastUsed);
