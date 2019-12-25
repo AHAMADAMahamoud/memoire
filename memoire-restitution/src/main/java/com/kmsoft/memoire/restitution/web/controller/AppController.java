@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.kmsoft.memoire.alimentation.dw.model.User;
-import com.kmsoft.memoire.alimentation.dw.model.UserProfile;
-import com.kmsoft.memoire.alimentation.dw.service.UserProfileService;
-import com.kmsoft.memoire.alimentation.dw.service.UserService;
+import com.kmsoft.memoire.restitution.web.model.User;
+import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.service.UserProfileService;
+import com.kmsoft.memoire.restitution.web.service.UserService;
 
 @Controller
 @RequestMapping("/")

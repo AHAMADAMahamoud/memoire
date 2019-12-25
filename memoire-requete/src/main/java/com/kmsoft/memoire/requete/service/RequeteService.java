@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kmsoft.memoire.alimentation.dw.repository.AbstractRepository;
+import com.kmsoft.memoire.requete.repository.AbstractRepository;
 import com.kmsoft.memoire.requete.model.Requette;
 
 

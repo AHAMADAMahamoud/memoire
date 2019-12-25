@@ -1,9 +1,10 @@
-package com.kmsoft.memoire.alimentation.dw.repository;
+package com.kmsoft.memoire.restitution.web.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.kmsoft.memoire.alimentation.dw.model.User;
+import com.kmsoft.memoire.restitution.web.model.User;
+
 
 
 @Repository

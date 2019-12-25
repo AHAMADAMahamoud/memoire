@@ -14,9 +14,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmsoft.memoire.alimentation.dw.model.User;
-import com.kmsoft.memoire.alimentation.dw.model.UserProfile;
-import com.kmsoft.memoire.alimentation.dw.service.UserService;
+import com.kmsoft.memoire.restitution.web.model.User;
+import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.service.UserService;
+
 
 
 @Service("customUserDetailsService")

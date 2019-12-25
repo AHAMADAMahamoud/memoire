@@ -33,7 +33,7 @@
  
 	<modules>
 		<module>memoire-restitution</module>
-		<module>memoire-alimentation</module>
+		
 		<module>memoire-interpreteur</module>
 		<module>memoire-requete</module>
 	</modules>

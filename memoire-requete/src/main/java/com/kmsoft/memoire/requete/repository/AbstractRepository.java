@@ -1,5 +1,5 @@
 
-package com.kmsoft.memoire.alimentation.dw.repository;
+package com.kmsoft.memoire.requete.repository;
 
 import java.util.List;
 

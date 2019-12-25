@@ -1,4 +1,4 @@
-package com.kmsoft.memoire.alimentation.dw.service;
+package com.kmsoft.memoire.restitution.web.service;
 
 import java.util.List;
 
@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmsoft.memoire.alimentation.dw.repository.UserProfileRepository;
-import com.kmsoft.memoire.alimentation.dw.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.repository.UserProfileRepository;
+
+
 
 
 

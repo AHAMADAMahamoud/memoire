@@ -1,8 +1,8 @@
-package com.kmsoft.memoire.alimentation.dw.service;
+package com.kmsoft.memoire.restitution.web.service;
 
 import java.util.List;
 
-import com.kmsoft.memoire.alimentation.dw.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.model.UserProfile;
 
 
 

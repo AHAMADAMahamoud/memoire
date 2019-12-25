@@ -1,8 +1,9 @@
-package com.kmsoft.memoire.alimentation.dw.service;
+package com.kmsoft.memoire.restitution.web.service;
 
 import java.util.List;
 
-import com.kmsoft.memoire.alimentation.dw.model.User;
+import com.kmsoft.memoire.restitution.web.model.User;
+
 
 
 public interface UserService {

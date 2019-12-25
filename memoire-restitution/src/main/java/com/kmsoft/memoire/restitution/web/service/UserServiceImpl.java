@@ -1,4 +1,4 @@
-package com.kmsoft.memoire.alimentation.dw.service;
+package com.kmsoft.memoire.restitution.web.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmsoft.memoire.alimentation.dw.repository.UserRepository;
-import com.kmsoft.memoire.alimentation.dw.model.User;
+import com.kmsoft.memoire.restitution.web.model.User;
+import com.kmsoft.memoire.restitution.web.repository.UserRepository;
 
 
 

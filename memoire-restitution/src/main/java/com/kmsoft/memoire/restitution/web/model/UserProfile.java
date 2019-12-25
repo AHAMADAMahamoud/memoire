@@ -1,4 +1,4 @@
-package com.kmsoft.memoire.alimentation.dw.model;
+package com.kmsoft.memoire.restitution.web.model;
 
 import java.io.Serializable;
 
