@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="user_profile")
-public class UserProfile implements Serializable{
+@Entity(name="users_profile")
+public class UsersProfile implements Serializable{
 
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class UserProfile implements Serializable{
 	private Integer id;	
 
 	@Column(name="type", length=15, unique=true, nullable=false)
-	private String type = UserProfileType.USER.getUserProfileType();
+	private String type = UsersProfileType.USER.getUserProfileType();
 	
 	public Integer getId() {
 		return id;
@@ -53,9 +53,9 @@ public class UserProfile implements Serializable{
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof UserProfile))
+		if (!(obj instanceof UsersProfile))
 			return false;
-		UserProfile other = (UserProfile) obj;
+		UsersProfile other = (UsersProfile) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -15,8 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity(name = "app_user")
-public class User implements Serializable {
+@Entity(name = "users")
+public class Users implements Serializable {
 
 	/**
 	 * 
@@ -51,7 +51,7 @@ public class User implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "app_user_user_profile", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "user_profile_id") })
-	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+	private Set<UsersProfile> userProfiles = new HashSet<UsersProfile>();
 
 	public Integer getId() {
 		return id;
@@ -101,11 +101,11 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public Set<UserProfile> getUserProfiles() {
+	public Set<UsersProfile> getUserProfiles() {
 		return userProfiles;
 	}
 
-	public void setUserProfiles(Set<UserProfile> userProfiles) {
+	public void setUserProfiles(Set<UsersProfile> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
 
@@ -124,9 +124,9 @@ public class User implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof User))
+		if (!(obj instanceof Users))
 			return false;
-		User other = (User) obj;
+		Users other = (Users) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

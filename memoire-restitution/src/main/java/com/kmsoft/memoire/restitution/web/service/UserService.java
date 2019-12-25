@@ -2,23 +2,23 @@ package com.kmsoft.memoire.restitution.web.service;
 
 import java.util.List;
 
-import com.kmsoft.memoire.restitution.web.model.User;
+import com.kmsoft.memoire.restitution.web.model.Users;
 
 
 
 public interface UserService {
 	
-	User findById(int id);
+	Users findById(int id);
 	
-	User findBySSO(String sso);
+	Users findBySSO(String sso);
 	
-	void saveUser(User user);
+	void saveUser(Users user);
 	
-	void updateUser(User user);
+	void updateUser(Users user);
 	
 	void deleteUserBySSO(String sso);
 
-	List<User> findAllUsers(); 
+	List<Users> findAllUsers(); 
 	
 	boolean isUserSSOUnique(Integer id, String sso);
 

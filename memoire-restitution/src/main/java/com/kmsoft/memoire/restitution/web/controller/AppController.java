@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.kmsoft.memoire.restitution.web.model.User;
-import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.model.Users;
+import com.kmsoft.memoire.restitution.web.model.UsersProfile;
 import com.kmsoft.memoire.restitution.web.service.UserProfileService;
 import com.kmsoft.memoire.restitution.web.service.UserService;
 
@@ -58,7 +58,7 @@ public class AppController {
 	@RequestMapping(value = {  "/list" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
 
-		List<User> users = userService.findAllUsers();
+		List<Users> users = userService.findAllUsers();
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "userslist";
@@ -71,7 +71,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/newuser" }, method = RequestMethod.GET)
 	public String newUser(ModelMap model) {
-		User user = new User();
+		Users user = new Users();
 		model.addAttribute("user", user);
 		model.addAttribute("edit", false);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -84,7 +84,7 @@ public class AppController {
 	 * saving user in database. It also validates the user input
 	 */
 	@RequestMapping(value = { "/newuser" }, method = RequestMethod.POST)
-	public String saveUser(@Valid User user, BindingResult result,
+	public String saveUser(@Valid Users user, BindingResult result,
 			ModelMap model) {
 
 		if (result.hasErrors()) {
@@ -119,7 +119,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String ssoId, ModelMap model) {
-		User user = userService.findBySSO(ssoId);
+		Users user = userService.findBySSO(ssoId);
 		model.addAttribute("user", user);
 		model.addAttribute("edit", true);
 		model.addAttribute("loggedinuser", getPrincipal());
@@ -132,7 +132,7 @@ public class AppController {
 	 * updating user in database. It also validates the user input
 	 */
 	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.POST)
-	public String updateUser(@Valid User user, BindingResult result,
+	public String updateUser(@Valid Users user, BindingResult result,
 			ModelMap model, @PathVariable String ssoId) {
 
 		if (result.hasErrors()) {
@@ -169,7 +169,7 @@ public class AppController {
 	 * This method will provide UserProfile list to views
 	 */
 	@ModelAttribute("roles")
-	public List<UserProfile> initializeProfiles() {
+	public List<UsersProfile> initializeProfiles() {
 		return userProfileService.findAll();
 	}
 	

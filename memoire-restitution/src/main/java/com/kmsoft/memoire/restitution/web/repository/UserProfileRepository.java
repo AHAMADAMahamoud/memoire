@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.model.UsersProfile;
 
 
 
 @Repository
-public interface UserProfileRepository extends JpaRepository<UserProfile, Long>{
+public interface UserProfileRepository extends JpaRepository<UsersProfile, Long>{
 
-	List<UserProfile> findAll();
+	List<UsersProfile> findAll();
 	
-	UserProfile findByType(String type);
+	UsersProfile findByType(String type);
 	
-	UserProfile findById(Integer id);
+	UsersProfile findById(Integer id);
 }

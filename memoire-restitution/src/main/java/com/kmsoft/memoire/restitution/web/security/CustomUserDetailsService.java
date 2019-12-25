@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmsoft.memoire.restitution.web.model.User;
-import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.model.Users;
+import com.kmsoft.memoire.restitution.web.model.UsersProfile;
 import com.kmsoft.memoire.restitution.web.service.UserService;
 
 
@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String ssoId)
 			throws UsernameNotFoundException {
-		User user = userService.findBySSO(ssoId);
+		Users user = userService.findBySSO(ssoId);
 		logger.info("User : {}", user);
 		if(user==null){
 			logger.info("User not found");
@@ -42,10 +42,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 	}
 
 	
-	private List<GrantedAuthority> getGrantedAuthorities(User user){
+	private List<GrantedAuthority> getGrantedAuthorities(Users user){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
-		for(UserProfile userProfile : user.getUserProfiles()){
+		for(UsersProfile userProfile : user.getUserProfiles()){
 			logger.info("UserProfile : {}", userProfile);
 			authorities.add(new SimpleGrantedAuthority("ROLE_"+userProfile.getType()));
 		}

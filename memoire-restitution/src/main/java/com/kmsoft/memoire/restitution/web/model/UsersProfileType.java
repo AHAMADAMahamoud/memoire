@@ -2,13 +2,12 @@ package com.kmsoft.memoire.restitution.web.model;
 
 import java.io.Serializable;
 
-public enum UserProfileType implements Serializable{
+public enum UsersProfileType implements Serializable{
 	USER("USER"),
-	ADMIN("ADMIN"),
-	DBA("DBA");
+	ADMIN("ADMIN");
 	String userProfileType;
 	
-	private UserProfileType(String userProfileType){
+	private UsersProfileType(String userProfileType){
 		this.userProfileType = userProfileType;
 	}
 	

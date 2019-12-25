@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmsoft.memoire.restitution.web.model.User;
+import com.kmsoft.memoire.restitution.web.model.Users;
 import com.kmsoft.memoire.restitution.web.repository.UserRepository;
 
 
@@ -22,16 +22,16 @@ public class UserServiceImpl implements UserService{
 	@Autowired
     private PasswordEncoder passwordEncoder;
 	
-	public User findById(int id) {
+	public Users findById(int id) {
 		return dao.findById(id);
 	}
 
-	public User findBySSO(String sso) {
-		User user = dao.findBySsoId(sso);
+	public Users findBySSO(String sso) {
+		Users user = dao.findBySsoId(sso);
 		return user;
 	}
 
-	public void saveUser(User user) {
+	public void saveUser(Users user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		dao.save(user);
 	}
@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService{
 	 * Just fetch the entity from db and update it with proper values within transaction.
 	 * It will be updated in db once transaction ends. 
 	 */
-	public void updateUser(User user) {
-		User entity = dao.findById(user.getId());
+	public void updateUser(Users user) {
+		Users entity = dao.findById(user.getId());
 		if(entity!=null){
 			entity.setSsoId(user.getSsoId());
 			if(!user.getPassword().equals(entity.getPassword())){
@@ -60,12 +60,12 @@ public class UserServiceImpl implements UserService{
 		dao.deleteBySsoId(sso);
 	}
 
-	public List<User> findAllUsers() {
+	public List<Users> findAllUsers() {
 		return dao.findAll();
 	}
 
 	public boolean isUserSSOUnique(Integer id, String sso) {
-		User user = findBySSO(sso);
+		Users user = findBySSO(sso);
 		return ( user == null || ((id != null) && (user.getId() == id)));
 	}
 	

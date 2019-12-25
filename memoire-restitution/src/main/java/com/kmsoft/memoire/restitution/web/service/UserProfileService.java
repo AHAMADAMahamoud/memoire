@@ -2,16 +2,16 @@ package com.kmsoft.memoire.restitution.web.service;
 
 import java.util.List;
 
-import com.kmsoft.memoire.restitution.web.model.UserProfile;
+import com.kmsoft.memoire.restitution.web.model.UsersProfile;
 
 
 
 public interface UserProfileService {
 
-	UserProfile findById(int id);
+	UsersProfile findById(int id);
 
-	UserProfile findByType(String type);
+	UsersProfile findByType(String type);
 	
-	List<UserProfile> findAll();
+	List<UsersProfile> findAll();
 	
 }
