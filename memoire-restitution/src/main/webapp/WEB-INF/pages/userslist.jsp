@@ -14,7 +14,7 @@
         
         <div class="maincontent">
             <div class="maincontentinner">
-		  <h4 class="widgettitle">Liste des utilisateur de l'application</h4>
+		  <h4 class="widgettitle">Liste des utilisateurs</h4>
 			<table class="table responsive">
 	    		<thead>
 		      		<tr>

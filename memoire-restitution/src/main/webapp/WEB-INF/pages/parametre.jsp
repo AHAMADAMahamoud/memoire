@@ -12,20 +12,20 @@
 		</div>
 		<div class="pagetitle">
 			<h5>Administration decisionnel de KomoCache</h5>
-			<h1><c:out value="${msg}" /></h1>
+			<h1>
+				<c:out value="${msg}" />
+			</h1>
 		</div>
 	</div>
 	<!--pageheader-->
 
 	<div class="maincontent">
-					<div class="maincontentinner">
-						<div class="row-fluid">
-							<div class="span4 profile-left">
+		<div class="maincontentinner">
+			<div class="row-fluid">
+				<div class="span4 profile-left"></div>
+				<!--span4-->
 
 			</div>
-							<!--span4-->
-							
-						</div>
-						<!--row-fluid-->
+			<!--row-fluid-->
 
 			<%@include file="pied.jsp"%>

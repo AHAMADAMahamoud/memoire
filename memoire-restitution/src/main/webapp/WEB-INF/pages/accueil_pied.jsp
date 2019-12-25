@@ -19,9 +19,9 @@
 	
 			
 		var plot = jQuery.plot(jQuery("#chartplace"),
-			   [ { data: flash, label: "Anjouan(x)", color: "#6fad04"},
-              { data: html5, label: "Moheli(x)", color: "#06c"},
-              { data: css3, label: "Grande Comores", color: "#666"} ], {
+			   [ { data: flash, label: "Moheli(x)", color: "#6fad04"},
+              { data: html5, label: "Grande Comores(x)", color: "#06c"},
+              { data: css3, label: "Anjouan", color: "#666"} ], {
 				   series: {
 					   lines: { show: true, fill: true, fillColor: { colors: [ { opacity: 0.05 }, { opacity: 0.15 } ] } },
 					   points: { show: true }

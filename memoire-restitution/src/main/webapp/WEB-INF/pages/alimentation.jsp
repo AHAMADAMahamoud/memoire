@@ -119,7 +119,7 @@
 									<tr>
 										<p style="padding: 20px" align="center">
 											Les extensions des fichiers de données authorisées sont :<font color="magenta">.sql</font>,
-											<font color="magenta"> .xls</font> et <font color="magenta">
+											<font color="magenta"> .xls</font>, <font color="magenta"> .xlsx</font> et <font color="magenta">
 												.csv</font> 
 												
 												<input type="text" name="directory" class="input-block-level" value="<c:out value="${dossier}" />" readonly="readonly">

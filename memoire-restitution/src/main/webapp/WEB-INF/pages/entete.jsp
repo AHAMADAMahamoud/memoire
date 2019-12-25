@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" href="${css1}" type="text/css" />
 <link rel="stylesheet" href="${css2}"  type="text/css">
-<c:url value="/ressources/images/logo.png" var="imglogo" />
+<c:url value="/ressources/images/logo1.png" var="imglogo" />
 <c:url value="/ressources/images/loaders/loader27.gif" var="imgload" />
 <c:url value="/ressources/images/photos/thumb1.png" var="thumb1" />
 

@@ -66,7 +66,7 @@
 			</table>
 			<br> <a href="open_restitution_pdf"
 				class="btn btn-primary btn-rounded"> Enregistrer PDF</a> 
-				<a href=""
+				<a href="open_restitution_Excel"
 				class="btn btn-primary btn-rounded"> Enregistrer EXCEL</a> <br />
 
 			<%@include file="pied.jsp"%>

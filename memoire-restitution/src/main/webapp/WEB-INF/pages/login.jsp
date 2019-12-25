@@ -11,7 +11,7 @@
 <title>KomoCash</title>
 <link rel="stylesheet" href="<c:url value="ressources/css/style.default.css" />" type="text/css" />
 <link rel="stylesheet" href="<c:url value="ressources/css/style.shinyblue.css" />" type="text/css" />
-<c:url value="/ressources/images/logo.png" var="imglogo" />
+<c:url value="/ressources/images/logo1.png" var="imglogo" />
 
 <script type="text/javascript" src="/ressources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/ressources/js/jquery-migrate-1.1.1.min.js"></script>

@@ -108,13 +108,13 @@
 					<label class="col-md-3 control-lable" for="userProfiles">Roles</label>
 					<div class="col-md-7">
 
-						<form:select path="userProfiles" class="form-control input-sm">
+						<%-- <form:select path="userProfiles" class="form-control input-sm">
 							<form:options items="${roles_}" itemValue="id" itemLabel="type" />
-						</form:select>
+						</form:select> --%>
 						
 						<select name="userProfiles"  >
 						<c:forEach items="${roles_}" var="item">
-									<option id="${ item.id}"><c:out value="${item.type}"></c:out> </option>
+									<option id="${ item.id}"><c:out value="${item}"></c:out> </option>
 									</c:forEach>
 								</select>
 						

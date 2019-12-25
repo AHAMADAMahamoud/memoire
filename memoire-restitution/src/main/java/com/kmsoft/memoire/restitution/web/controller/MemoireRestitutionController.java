@@ -85,5 +85,11 @@ public class MemoireRestitutionController {
 		modelRecet.addAttribute("msg", "Affiche des différents recettes");
 		return "recette";
 	}
+	
+	@RequestMapping(value = "/open_restitution_Excel", method = RequestMethod.GET)
+	public String openRestitutionExcel(Model modelRecet) {
+		modelRecet.addAttribute("msg", "Affiche des différents recettes");
+		return "recette";
+	}
 
 }
