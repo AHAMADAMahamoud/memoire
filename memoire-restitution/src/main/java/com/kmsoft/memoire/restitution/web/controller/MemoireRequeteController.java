@@ -6,12 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kmsoft.memoire.requete.model.Requette;
+import com.kmsoft.memoire.requete.model.Requete;
 import com.kmsoft.memoire.requete.service.RequeteService;
 
 @Controller
@@ -32,14 +34,14 @@ public class MemoireRequeteController {
 	public String ouvreAccueilRequette(Model model) {
 		model.addAttribute("msg", "Gestion des requêtes");
 		model.addAttribute("listrequete", this.requeteServ.listerRequete());
-		
+		model.addAttribute("active_req", "active");
 		return "requete";
 	}
 
 	@RequestMapping(value = "/load_default_request", method = RequestMethod.GET)
 	public String chargerRequete(Model model) {
 
-		String message=requeteServ.chargerDansLaBase();
+		String message = requeteServ.chargerDansLaBase();
 		model.addAttribute("msg", "Gestion des requêtes");
 
 		model.addAttribute("class_info", "alert-success");
@@ -47,23 +49,53 @@ public class MemoireRequeteController {
 		model.addAttribute("info", "Bien joué :");
 		model.addAttribute("info_suite", message);
 		model.addAttribute("listrequete", this.requeteServ.listerRequete());
-		
+		model.addAttribute("active_req", "active");
+
+		return "requete";
+	}
+
+	@RequestMapping(value = "/ajout_nouveau_request", method = RequestMethod.POST)
+	public String ajoutRequete(Model model, @RequestParam(name = "requet") String requet,
+			@RequestParam(name = "code") String code) {
+
+		String message = requeteServ.ajouterDansLaBase(code, requet);
+		model.addAttribute("msg", "Gestion des requêtes");
+
+		model.addAttribute("class_info", "alert-success");
+
+		model.addAttribute("info", "Bien joué :");
+		model.addAttribute("info_suite", message);
+		model.addAttribute("listrequete", this.requeteServ.listerRequete());
+		model.addAttribute("active_req", "active");
+
+		return "requete";
+	}
+
+	@GetMapping(value = "/modifier_request")
+	public String modifierRequete(Model model, @RequestParam(name = "code") String code) {
+
+		Requete req = requeteServ.obtenirRequete(code);
+		model.addAttribute("msg", "Gestion des requêtes");
+		model.addAttribute("req", req);
+		model.addAttribute("listrequete", this.requeteServ.listerRequete());
+		model.addAttribute("active_req", "active");
+
 		return "requete";
 	}
 
 	@RequestMapping(value = "/getRequettes", method = RequestMethod.GET)
-	public @ResponseBody List<Requette> getRequettes(@RequestParam(name = "requetteFr") String requetteFr) {
+	public @ResponseBody List<Requete> getRequettes(@RequestParam(name = "requetteFr") String requetteFr) {
 
 		return rechercheRequetteCorrespondant(requetteFr);
 
 	}
 
-	private List<Requette> rechercheRequetteCorrespondant(String requettecharcter) {
+	private List<Requete> rechercheRequetteCorrespondant(String requettecharcter) {
 
-		List<Requette> result = new ArrayList<Requette>();
+		List<Requete> result = new ArrayList<Requete>();
 
 		// iterate a list and filter by RequetteName
-		for (Requette requette : requeteServ.recupererLesRequetteParDefaut()) {
+		for (Requete requette : requeteServ.recupererLesRequetteParDefaut()) {
 			if (this.containsIgnoreCase(requette.getRequetteFr(), requettecharcter)) {
 				result.add(requette);
 			}

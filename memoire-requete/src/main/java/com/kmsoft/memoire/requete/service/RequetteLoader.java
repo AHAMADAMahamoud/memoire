@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
-import com.kmsoft.memoire.requete.model.Requette;
+import com.kmsoft.memoire.requete.model.Requete;
 
 @Component
 public class RequetteLoader {
@@ -46,13 +46,13 @@ public class RequetteLoader {
 
 	}
 
-	public ArrayList<Requette> getDefaultRequest() {
-		ArrayList<Requette> data = new ArrayList<>();
+	public ArrayList<Requete> getDefaultRequest() {
+		ArrayList<Requete> data = new ArrayList<>();
 		int nombreRequette=properties_fr.stringPropertyNames().size();
 		for(int i=1; i<=nombreRequette; i++){
 			
-			Requette r = new Requette();
-			r.setCodeR("requette"+i);
+			Requete r = new Requete();
+			r.setCodeReq("requette"+i);
 			r.setDateInsert(Calendar.getInstance().getTime());
 			r.setRequetteFr(properties_fr.getProperty("requette"+i));
 			r.setRequetteSql(properties_sql.getProperty("requette"+i));

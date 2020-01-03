@@ -31,10 +31,9 @@
 									<div class="widgetcontent">
 										<ul class="taglist">
 										<c:forEach items="${listrequete}" var="requete"> 
-											<li><a href="">${requete.requetteFr} </a></li>
+											<li><a href="/modifier_request?code=${requete.codeReq}">${requete.requetteFr} </a></li>
 											</c:forEach>
 													</ul>
-										<a href="" style="display: block; margin-top: 10px">Editer</a>
 									</div>
 								</div>
 
@@ -44,7 +43,7 @@
 								<div class="widgetbox personal-information">
 									<h4 class="widgettitle">Chargment des requettes</h4>
 									<div class="widgetcontent">
-										<form class="stdform" action="forms.html" method="post">
+										<form:form class="stdform" action="/ajout_nouveau_request" method="post">
 
 											<c:if test="${class_info!=null}">
 												<div style="margin: 20px"
@@ -62,18 +61,18 @@
 
 
 											<p>
-												<label>Ou Ajouter un nouveau requête</label> <span
-													class="field"><textarea cols="80" rows="5"
-														class="span5"></textarea></span>
+												<label>Ou <c:if test="${req==null}">ajouter un nouveau</c:if><c:if test="${req!=null}">mettre à jour la</c:if>  requête</label> 
+												<span class="field"><textarea cols="80" rows="5" class="span5" name="requet">${req.requetteFr}</textarea></span>
+											
+												<label>Code requête</label> <span class="field"><input type="text" class="span2"  name="code"value="${req.codeReq}"/></span>
 											</p>
 
 											<p class="stdformbutton">
 												<button class="btn btn-primary">Enregistrer</button>
-												<button class="btn btn-primary" disabled="disabled">Enregistrer
-													et lancer la transcription</button>
+												<button class="btn btn-primary" disabled="disabled">annuler</button>
 											</p>
 
-										</form>
+										</form:form>
 
 									</div>
 								</div>

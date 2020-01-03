@@ -72,15 +72,15 @@ CREATE TABLE fait_vente (
 
 -- DROP TABLE public.requette;
 
-CREATE TABLE requette (
+CREATE TABLE requete (
 	id serial NOT NULL,
-	coder varchar(255) NULL,
-	dateconverti timestamp NULL,
-	dateexecution timestamp NULL,
-	dateinsert timestamp NULL,
-	etat varchar(255) NULL,
-	requettefr varchar(500) NULL,
-	requettesql varchar(500) NULL,
-	resultat varchar(255) NULL,
+	code_req varchar(255) NULL,
+	date_converti timestamp NULL,
+	date_execution timestamp NULL,
+	date_insert timestamp NULL,
+	etat_req varchar(255) NULL,
+	requette_fr varchar(500) NULL,
+	requette_sql varchar(500) NULL,
+	resultat json  NULL,
 	CONSTRAINT requette_pkey PRIMARY KEY (id)
 );

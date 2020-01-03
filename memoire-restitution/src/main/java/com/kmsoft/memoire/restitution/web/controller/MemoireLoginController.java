@@ -27,6 +27,7 @@ public class MemoireLoginController {
 	@RequestMapping(value = {"/","/accueil"}, method = RequestMethod.GET)
 	public String accueil(Model model) {
 		model.addAttribute("msg", "KOMOCASH APP");
+		model.addAttribute("active_home", "active");
 		logger.info("==Connexion établie==");
 		return "accueil";
 

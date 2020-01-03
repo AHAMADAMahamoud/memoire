@@ -48,7 +48,7 @@
                         
                         <br />
                         
-                        <h5 class="subtitle">Ventes du mois en cours par île</h5><br />
+                        <h5 class="subtitle">Evolution des ventes durant ces dernières années</h5><br />
                         <div id="chartplace" style="height:300px;"></div>
                         
                         <div class="divider30"></div>

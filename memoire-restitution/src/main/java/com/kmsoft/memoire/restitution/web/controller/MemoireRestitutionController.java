@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kmsoft.memoire.requete.model.Requette;
+import com.kmsoft.memoire.requete.model.Requete;
 import com.kmsoft.memoire.requete.service.Pair;
 import com.kmsoft.memoire.requete.service.RequeteService;
 
@@ -29,6 +29,7 @@ public class MemoireRestitutionController {
 	public String openRapprotTable(Model model) {
 		model.addAttribute("msg", "Gestion des rapports");
 		model.addAttribute("listrequete", this.requeteServ.listerRequete());
+		model.addAttribute("active_rest", "active");
 		return "restitution";
 	}
 
@@ -36,7 +37,7 @@ public class MemoireRestitutionController {
 	public String openRapport(@RequestParam("req_id") long reqId, Model model) {
 
 		model.addAttribute("msg", "Gestion des export");
-		Pair<Requette, List<Object[]>> o = this.requeteServ.obtenirResultatRequette(reqId);
+		Pair<Requete, List<Object[]>> o = this.requeteServ.obtenirResultatRequette(reqId);
 		int ncolonne = 0;
 
 		if (o.getResultat().size() < 2) {
@@ -49,19 +50,21 @@ public class MemoireRestitutionController {
 		model.addAttribute("info_req", rFr.startsWith("Aff") ? rFr.replace("Afficher ", "") : rFr);
 		model.addAttribute("culumn_size", ncolonne);
 		model.addAttribute("listresultat", o.getResultat());
-		
+		model.addAttribute("active_param", "active");
 		return "rapport";
 	}
 
 	@RequestMapping(value = "/open_parametre", method = RequestMethod.GET)
 	public String openParametre(Model model) {
 		model.addAttribute("msg", "Gestion des utilisateurs");
+		model.addAttribute("active_param", "active");
 		return "parametre";
 	}
 
 	@RequestMapping(value = "/open_chiffredaffaire", method = RequestMethod.GET)
 	public String openChiffreAffaire(Model modelca) {
 		modelca.addAttribute("msg", "Affiche du Chiffre d'affaire");
+		modelca.addAttribute("active_rest", "active");
 
 		return "ca";
 	}
@@ -70,7 +73,7 @@ public class MemoireRestitutionController {
 	public String openProduits(Model modelPro) {
 		
 		modelPro.addAttribute("msg", "Affiche des différents produits");
-		
+		modelPro.addAttribute("active_rest", "active");
 		return "produit";
 	}
 

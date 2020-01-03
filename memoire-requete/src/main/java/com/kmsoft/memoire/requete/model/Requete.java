@@ -5,41 +5,57 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.Type;
+
 @Entity
-public class Requette extends AbstractEntity {
+public class Requete extends AbstractEntity {
 
-	private String codeR;
+	@Column(name = "code_req")
+	private String codeReq;
+	
+	@Column(name = "date_insert")
 	private Date dateInsert;
+	
+	@Column(name = "date_converti")
 	private Date dateConverti;
+	
+	@Column(name = "date_execution")
 	private Date dateExecution;
+	
+	
+    @Column(name = "resultat", columnDefinition = "jsonb")
 	private String resultat;
-	@Column(length = 500)
+	
+	@Column(name="requette_sql", length = 500)
 	private String requetteSql;
-	@Column(length = 500)
+	
+	@Column(name="requette_fr",length = 500)
 	private String requetteFr;
-	private String etat;
+	
+	@Column(name = "etat_req")
+	private String etatReq;
 
-	public Requette() {
+	public Requete() {
 	}
 
-	public Requette(String requetteFr) {
+	public Requete(String requetteFr) {
 		this.requetteFr = requetteFr;
 	}
 
-	public String getCodeR() {
-		return codeR;
+	public String getCodeReq() {
+		return codeReq;
 	}
 
-	public void setCodeR(String string) {
-		this.codeR = string;
+	public void setCodeReq(String codeReq) {
+		this.codeReq = codeReq;
 	}
 
 	public Date getDateInsert() {
 		return dateInsert;
 	}
 
-	public void setDateInsert(Date date) {
-		this.dateInsert = date;
+	public void setDateInsert(Date dateInsert) {
+		this.dateInsert = dateInsert;
 	}
 
 	public Date getDateConverti() {
@@ -82,19 +98,21 @@ public class Requette extends AbstractEntity {
 		this.requetteFr = requetteFr;
 	}
 
-	public String getEtat() {
-		return etat;
+	public String getEtatReq() {
+		return etatReq;
 	}
 
-	public void setEtat(String etat) {
-		this.etat = etat;
+	public void setEtatReq(String etatReq) {
+		this.etatReq = etatReq;
 	}
 
 	@Override
 	public String toString() {
-		return "Requette [codeR=" + codeR + ", dateInsert=" + dateInsert + ", dateConverti=" + dateConverti
+		return "Requete [codeReq=" + codeReq + ", dateInsert=" + dateInsert + ", dateConverti=" + dateConverti
 				+ ", dateExecution=" + dateExecution + ", resultat=" + resultat + ", requetteSql=" + requetteSql
-				+ ", requetteFr=" + requetteFr + ", etat=" + etat + "]";
+				+ ", requetteFr=" + requetteFr + ", etatReq=" + etatReq + "]";
 	}
+
+	
 
 }
