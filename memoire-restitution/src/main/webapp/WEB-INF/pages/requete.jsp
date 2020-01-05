@@ -63,8 +63,7 @@
 											<p>
 												<label>Ou <c:if test="${req==null}">ajouter un nouveau</c:if><c:if test="${req!=null}">mettre à jour la</c:if>  requête</label> 
 												<span class="field"><textarea cols="80" rows="5" class="span5" name="requet">${req.requetteFr}</textarea></span>
-											
-												<label>Code requête</label> <span class="field"><input type="text" class="span2"  name="code"value="${req.codeReq}"/></span>
+											<input type="hidden" class="span2"  name="code"value="${req.codeReq}"/>
 											</p>
 
 											<p class="stdformbutton">

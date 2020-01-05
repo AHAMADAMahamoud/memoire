@@ -1,6 +1,4 @@
-package com.kmsoft.memoire;
-
-import javax.websocket.server.PathParam;
+package com.kmsoft.memoire.restitution.web.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;

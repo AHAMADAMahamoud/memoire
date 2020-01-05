@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kmsoft.memoire.requete.model.Requete;
 import com.kmsoft.memoire.requete.service.RequeteService;
+import com.kmsoft.memoire.restitution.web.utils.CodeGenerator;
 
 @Controller
 public class MemoireRequeteController {
@@ -58,14 +59,9 @@ public class MemoireRequeteController {
 	}
 
 	@RequestMapping(value = "/ajout_nouveau_request", method = RequestMethod.POST)
-	public String ajoutRequete(Model model, @RequestParam(name = "requet") String requet,
-			@RequestParam(name = "code") String code) {
-		// Genere un code
+	public String ajoutRequete(Model model, @RequestParam(name = "requet") String requet) {
 		
-		Random rd = new Random(10);
-		String cd = new StringBuilder(rd.nextInt()).append(requet.hashCode()).toString();
-		
-		System.err.println(cd);
+		String code=CodeGenerator.next();
 		
 		String message = requeteServ.ajouterDansLaBase(code, requet);
 		
