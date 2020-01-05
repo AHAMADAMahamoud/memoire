@@ -68,6 +68,7 @@
 											</p>
 
 											<p class="stdformbutton">
+											<a href="/supprimer_request?code=${req.codeReq}" class="btn btn-info">Supprimer</a>
 												<button class="btn btn-primary">Enregistrer</button>
 												<a href="open_accueil_requette" class="btn btn-info">Annuler</a>
 											</p>

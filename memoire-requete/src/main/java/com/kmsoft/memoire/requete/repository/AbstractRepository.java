@@ -55,7 +55,7 @@ public class AbstractRepository<T extends Object> {
 		return em.merge(t);
 	}
 
-	public void delete(Integer id, T t) {
+	public void delete(Long id, T t) {
 		this.em.remove(this.findOne(id, t));
 	}
 

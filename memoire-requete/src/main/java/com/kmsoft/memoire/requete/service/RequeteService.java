@@ -110,6 +110,7 @@ public class RequeteService {
 
 		return o;
 	}
+
 	@Transactional(rollbackOn = Exception.class)
 	public String ajouterDansLaBase(String code, String requet) {
 		String message = "";
@@ -118,8 +119,8 @@ public class RequeteService {
 		try {
 			if (!requeteDao.ifExist(r, "where code_req='" + r.getCodeReq() + "'")) {
 				requeteDao.save(r);
-			}else {
-				Requete r_up=obtenirRequete(r.getCodeReq());
+			} else {
+				Requete r_up = obtenirRequete(r.getCodeReq());
 				r_up.setRequetteFr(r.getRequetteFr());
 				requeteDao.update(r_up);
 			}
@@ -132,8 +133,14 @@ public class RequeteService {
 	}
 
 	public Requete obtenirRequete(String code) {
-	return	requeteDao.findByColumn(code, "code_req", new Requete());
+		return requeteDao.findByColumn(code, "code_req", new Requete());
 
+	}
+	@Transactional(rollbackOn = Exception.class)
+	public Requete supprimerRequette(String code) {
+		Requete r = obtenirRequete(code);
+		requeteDao.delete(r.getId(), r);
+		return r;
 	}
 
 }

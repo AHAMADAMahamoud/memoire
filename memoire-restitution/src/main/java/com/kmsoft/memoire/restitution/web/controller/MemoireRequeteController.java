@@ -1,7 +1,10 @@
 package com.kmsoft.memoire.restitution.web.controller;
 
+import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,8 +60,16 @@ public class MemoireRequeteController {
 	@RequestMapping(value = "/ajout_nouveau_request", method = RequestMethod.POST)
 	public String ajoutRequete(Model model, @RequestParam(name = "requet") String requet,
 			@RequestParam(name = "code") String code) {
-
+		// Genere un code
+		
+		Random rd = new Random(10);
+		String cd = new StringBuilder(rd.nextInt()).append(requet.hashCode()).toString();
+		
+		System.err.println(cd);
+		
 		String message = requeteServ.ajouterDansLaBase(code, requet);
+		
+		
 		model.addAttribute("msg", "Gestion des requêtes");
 
 		model.addAttribute("class_info", "alert-success");
@@ -83,6 +94,20 @@ public class MemoireRequeteController {
 		return "requete";
 	}
 
+	@GetMapping(value = "/supprimer_request")
+	public String supprimerRequete(Model model, @RequestParam(name = "code") String code) {
+
+		Requete req = requeteServ.supprimerRequette(code);
+		model.addAttribute("msg", "Gestion des requêtes");
+		
+		model.addAttribute("req", req);
+		model.addAttribute("listrequete", this.requeteServ.listerRequete());
+		model.addAttribute("active_req", "active");
+
+		return "requete";
+	}
+
+	
 	@RequestMapping(value = "/getRequettes", method = RequestMethod.GET)
 	public @ResponseBody List<Requete> getRequettes(@RequestParam(name = "requetteFr") String requetteFr) {
 
