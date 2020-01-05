@@ -14,7 +14,7 @@
 		
 			<li class="dropdown ${active_param}"><a href="open_parametre"><span class="iconfa-book"></span>Parametrages</a>
 				<ul>
-					<li><a href="">Outil d'administration des requêtes</a></li>
+					<li><a href="admin_requete">Outil d'administration des requêtes</a></li>
 					<li><a href="">Mes messages</a></li>
 				</ul></li>
 		</ul>

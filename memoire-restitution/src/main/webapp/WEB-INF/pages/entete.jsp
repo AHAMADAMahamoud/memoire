@@ -48,6 +48,17 @@
 
 <script type="text/javascript" src="${js11}"></script>
 <script type="text/javascript" src="${js12}"></script>
+
+
+
+<script type="text/javascript" src="/ressources/editor/lib/codemirror.js"></script>
+<script type="text/javascript" src="/ressources/editor/mode/clike/clike.js"></script>
+<script type="text/javascript" src="/ressources/editor/keymap/emacs.js"></script>
+
+
+<link rel="stylesheet" href="/ressources/editor/lib/codemirror.css">
+
+
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 
