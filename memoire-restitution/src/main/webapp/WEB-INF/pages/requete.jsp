@@ -69,7 +69,7 @@
 
 											<p class="stdformbutton">
 												<button class="btn btn-primary">Enregistrer</button>
-												<button class="btn btn-primary" disabled="disabled">annuler</button>
+												<a href="open_accueil_requette" class="btn btn-info">Annuler</a>
 											</p>
 
 										</form:form>

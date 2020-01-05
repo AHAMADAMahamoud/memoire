@@ -41,6 +41,22 @@ CREATE INDEX index_geographie ON public.dim_geographie USING btree (id);
 
 -- DROP TABLE public.dim_temps;
 
+
+CREATE TABLE dim_temps (
+	id int4 NOT NULL DEFAULT 0,
+	anneetmp int4 NULL,
+	datetmp timestamp NULL,
+	journomtmp varchar(255) NULL,
+	jourtmp int4 NOT NULL DEFAULT 0,
+	moisnomtmp varchar(255) NULL,
+	moistmp int4 NOT NULL DEFAULT 0,
+	semestretmp int4 NULL,
+	trimestretmp int4 NULL,
+	CONSTRAINT pk_temps PRIMARY KEY (id)
+);
+CREATE INDEX index_temps ON public.dim_temps USING btree (id);
+
+
 CREATE TABLE fait_vente (
 	id serial NOT NULL,
 	pkart int4 NOT NULL DEFAULT 0,
@@ -57,17 +73,6 @@ CREATE TABLE fait_vente (
 	
 );
 
-
-CREATE TABLE fait_vente (
-	id serial NOT NULL,
-	pkart int4 NOT NULL DEFAULT 0,
-	pkcat int4 NOT NULL DEFAULT 0,
-	pkgeo int4 NOT NULL DEFAULT 0,
-	pktmp int4 NOT NULL DEFAULT 0,
-	qtevente int4 NOT NULL DEFAULT 0,
-	montantvente int4 NOT NULL DEFAULT 0,
-	CONSTRAINT pk_vente PRIMARY KEY (id)
-);
 
 -- Drop table
 
