@@ -10,8 +10,8 @@
 						class="iconfa-th-list"></span> Gestion des requêtes</a></li>
 			<li class="${active_rest}"><a href="open_accueil_restitution"><span
 					class="iconfa-signal"></span> Reporting Managment</a></li>
-			<li class="${active_param}"><a href="open_parametre"><span class="iconfa-book"></span>
-					Parametrages</a></li>
+			<li class="${active_param}">
+			<a href="open_parametre"><span class="iconfa-book"></span>Parametrages</a></li>
 		</ul>
 	</div>
 	<!--leftmenu-->

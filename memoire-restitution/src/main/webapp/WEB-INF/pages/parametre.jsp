@@ -1,7 +1,5 @@
 <%@include file="entete.jsp"%>
 
-
-
 <%@include file="menu_gauche.jsp"%>
 
 <div class="rightpanel">
