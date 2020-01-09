@@ -1,16 +1,22 @@
 package com.kmsoft.memoire.requete.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kmsoft.memoire.requete.repository.AbstractRepository;
+import com.zaxxer.hikari.util.SuspendResumeLock;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.kmsoft.memoire.requete.model.Requete;
 
 @Service
@@ -104,9 +110,13 @@ public class RequeteService {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private List<Object[]> execute(Requete req) {
-		@SuppressWarnings("unchecked")
-		List<Object[]> o = (List<Object[]>) this.em.createNativeQuery(req.getRequetteSql()).getResultList();
+		Query exec = this.em.createNativeQuery(req.getRequetteSql());
+		List<Object[]> o = new ArrayList<>();
+		if (exec != null) {
+			o = (List<Object[]>) exec.getResultList();
+		}
 
 		return o;
 	}
@@ -136,11 +146,47 @@ public class RequeteService {
 		return requeteDao.findByColumn(code, "code_req", new Requete());
 
 	}
+
 	@Transactional(rollbackOn = Exception.class)
 	public Requete supprimerRequette(String code) {
 		Requete r = obtenirRequete(code);
-		requeteDao.delete(r.getId(), r);
+		if (r != null)
+			requeteDao.delete(r.getId(), r);
+
 		return r;
+	}
+
+	public List<Map<String, String>> preparData(JsonNode nodParent, String[] col) {
+		List<Map<String, String>> listAppParent = new ArrayList<>();
+
+		for (int i = 0; i < nodParent.size(); i++) {
+
+			System.err.println(nodParent.get(i));
+			
+			Map<String, String> appParantMap = new HashMap<>();
+			for(int j=0; j<col.length; j++) {
+				JsonNode value=nodParent.get(i);
+				appParantMap.put(col[j], value.get(j).asText());
+			}
+//				appParantMap.put("appName", appName.replace("\"", ""));
+//				appParantMap.put("appCountry", country);
+//				appParantMap.put("appStoreRating", storeRating);
+//				appParantMap.put("appReviewCount", reviewCount);
+//				appParantMap.put("appLastUpdate", lastUpdate);
+//				appParantMap.put("appMonitoringDate", monitoringDate);
+//				appParantMap.put("action", btAction);
+
+			listAppParent.add(appParantMap);
+		}
+		return listAppParent;
+
+	}
+
+	public List<Object[]> obtenirResultat() {
+		Requete req = new Requete("afficher tous les ventes");
+		req.setCodeReq("TESTRQ");
+		req.setRequetteSql("select * from fait_vente");
+		return this.execute(req);
 	}
 
 }

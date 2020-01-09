@@ -1,6 +1,9 @@
 package com.kmsoft.memoire.restitution.web.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kmsoft.memoire.requete.model.Requete;
 import com.kmsoft.memoire.requete.service.Pair;
 import com.kmsoft.memoire.requete.service.RequeteService;
@@ -50,13 +55,34 @@ public class MemoireRestitutionController {
 		model.addAttribute("info_req", rFr.startsWith("Aff") ? rFr.replace("Afficher ", "") : rFr);
 		model.addAttribute("culumn_size", ncolonne);
 		model.addAttribute("listresultat", o.getResultat());
-		model.addAttribute("active_param", "active");
+		model.addAttribute("graphe", "chartplace");
+		model.addAttribute("active_rest", "active");
 		return "rapport";
 	}
+	
+//	@RequestMapping(value = "/request", method = RequestMethod.GET)
+//	public String launch(Model model) {
+//		ObjectMapper mapper = new ObjectMapper();
+//		String jsonInString = null;
+//		List<Object[]> objs=this.requeteServ.obtenirResultat();
+//		String[] col= {"col1","col2","col3","col4"};
+//		try {
+//			List<Map<String, String>> response = requeteServ.preparData(mapper.convertValue(objs, JsonNode.class), col);
+//
+//			jsonInString = mapper.writeValueAsString(response);
+//		} catch (IOException e) {
+//			
+//		}
+//
+//		model.addAttribute("apps", jsonInString);
+//		model.addAttribute("col", col);
+//		
+//		return "dashboard";
+//	}
 
 	@RequestMapping(value = "/open_parametre", method = RequestMethod.GET)
 	public String openParametre(Model model) {
-		model.addAttribute("msg", "Gestion des utilisateurs");
+		model.addAttribute("msg", "Gestion des requetes");
 		model.addAttribute("active_param", "active");
 		return "parametre";
 	}

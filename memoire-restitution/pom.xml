@@ -87,13 +87,14 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.kmsoft.memoire</groupId>
 			<artifactId>memoire-requete</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
+		
 
 	</dependencies>
 	<build>
