@@ -25,6 +25,10 @@ public class Requete extends AbstractEntity {
 	
     @Column(name = "resultat", columnDefinition = "jsonb")
 	private String resultat;
+    
+    @Column(name = "resultat_graphe")
+    private String resultatGraphe;
+
 	
 	@Column(name="requette_sql", length = 500)
 	private String requetteSql;
@@ -34,7 +38,8 @@ public class Requete extends AbstractEntity {
 	
 	@Column(name = "etat_req")
 	private String etatReq;
-
+	
+	
 	public Requete() {
 	}
 
@@ -104,6 +109,14 @@ public class Requete extends AbstractEntity {
 
 	public void setEtatReq(String etatReq) {
 		this.etatReq = etatReq;
+	}
+
+	public String getResultatGraphe() {
+		return resultatGraphe;
+	}
+
+	public void setResultatGraphe(String resultatGraphe) {
+		this.resultatGraphe = resultatGraphe;
 	}
 
 	@Override

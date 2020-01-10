@@ -42,7 +42,10 @@
                             <!--  <td>${fn:substring(sqlQ, 0, 100)}...</td>-->
                             <td>${requete.dateExecution}</td>
                             <td>${requete.etatReq}</td>
-                             <td><a class="btn btn-info alertinfo" href="open_restitution?req_id=${requete.id}"><small>Afficher le rapport</small></a></td>
+                             <td><a class="btn btn-info alertinfo" href="open_restitution?req_id=${requete.id}"><small>Afficher le rapport</small></a>
+                             <a class="btn btn-error" href="open_restitution_admin?req_id=${requete.id}"><small>Rapport admin</small></a>
+                             </td>
+                             
                         </tr>
                     </c:forEach>
                     </tbody>

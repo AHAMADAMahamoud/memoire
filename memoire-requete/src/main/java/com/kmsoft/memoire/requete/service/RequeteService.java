@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.kmsoft.memoire.requete.repository.AbstractRepository;
 import com.zaxxer.hikari.util.SuspendResumeLock;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.Gson;
 import com.kmsoft.memoire.requete.model.Requete;
 
 @Service
@@ -57,7 +58,7 @@ public class RequeteService {
 		}
 		return message;
 	}
-
+	@Transactional(rollbackOn = Exception.class)
 	public Requete editerRequete(Requete req) {
 		return requeteDao.update(req);
 
@@ -118,6 +119,8 @@ public class RequeteService {
 			o = (List<Object[]>) exec.getResultList();
 		}
 
+
+		
 		return o;
 	}
 
@@ -144,6 +147,10 @@ public class RequeteService {
 
 	public Requete obtenirRequete(String code) {
 		return requeteDao.findByColumn(code, "code_req", new Requete());
+
+	}
+	public Requete obtenirRequeteParId(long id) {
+		return requeteDao.findOne(id, new Requete());
 
 	}
 
