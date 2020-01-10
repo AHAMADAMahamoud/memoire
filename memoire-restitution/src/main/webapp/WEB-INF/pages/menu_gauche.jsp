@@ -1,4 +1,3 @@
-
 <div class="leftpanel">
 
 	<div class="leftmenu">
