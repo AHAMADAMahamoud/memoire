@@ -141,6 +141,27 @@ public class RequeteService {
 		}
 		return message;
 	}
+	
+	@Transactional(rollbackOn = Exception.class)
+	public String ajouterDansLaBaseSQL(String requet) {
+		String message = "";
+		Requete r = new Requete(requet);
+	//	r.setCodeReq(code);
+		try {
+			if (!requeteDao.ifExist(r, "where code_req='" + r.getCodeReq() + "'")) {
+				requeteDao.save(r);
+			} else {
+				Requete r_up = obtenirRequete(r.getCodeReq());
+				r_up.setRequetteFr(r.getRequetteFr());
+				requeteDao.update(r_up);
+			}
+
+		} catch (Exception e) {
+			message = "Erreur inconnu";
+			e.printStackTrace();
+		}
+		return message;
+	}
 
 	public Requete obtenirRequete(String code) {
 		return requeteDao.findByColumn(code, "code_req", new Requete());

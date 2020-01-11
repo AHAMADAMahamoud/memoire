@@ -65,7 +65,6 @@ public class MemoireRequeteController {
 		
 		String message = requeteServ.ajouterDansLaBase(code, requet);
 		
-		
 		model.addAttribute("msg", "Gestion des requêtes");
 
 		model.addAttribute("class_info", "alert-success");

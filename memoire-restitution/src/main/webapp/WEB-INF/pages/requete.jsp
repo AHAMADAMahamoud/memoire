@@ -1,12 +1,8 @@
 <%@include file="entete.jsp"%>
 
-
-
 <%@include file="menu_gauche.jsp"%>
 
 <div class="rightpanel">
-
-
 
 	<div class="pageheader">
 		<div class="pageicon">
@@ -23,8 +19,6 @@
 					<div class="maincontentinner">
 						<div class="row-fluid">
 							<div class="span4 profile-left">
-
-
 
 								<div class="widgetbox tags">
 									<h4 class="widgettitle">Requêtes prétes pour reporting</h4>
@@ -59,7 +53,6 @@
 													Les requêtes pardefaut</a>
 											</p>
 
-
 											<p>
 												<label>Ou <c:if test="${req==null}">ajouter un nouveau</c:if><c:if test="${req!=null}">mettre à jour la</c:if>  requête</label> 
 												<span class="field"><textarea cols="80" rows="5" class="span5" name="requet">${req.requetteFr}</textarea></span>
@@ -77,15 +70,9 @@
 									</div>
 								</div>
 
-
-
 							</div>
 							<!--span8-->
 						</div>
-						<!--row-fluid-->
-
-						
-
-
+						<!--row-fluid-->			
 
 			<%@include file="pied.jsp"%>

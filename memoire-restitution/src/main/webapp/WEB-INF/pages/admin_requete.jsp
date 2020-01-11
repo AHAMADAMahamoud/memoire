@@ -1,9 +1,7 @@
 <%@include file="entete.jsp"%>
 
-
 <%@include file="menu_gauche.jsp"%>
 
-<
 <style>
 <!--
 -->
@@ -181,8 +179,6 @@
 			<div class="row-fluid">
 				<div class="span4 profile-left">
 
-
-
 					<div class="widgetbox tags">
 						<h4 class="widgettitle">Requêtes prétes pour reporting</h4>
 						<div class="widgetcontent">
@@ -202,7 +198,7 @@
 						<h4 class="widgettitle">Outils d'edition</h4>
 						<div class="widgetcontent">
 						<p> Requête : <b>${req.requetteFr}</b>&nbsp;&nbsp; | &nbsp;&nbsp; Envoyé le :<span class="text-error">${req.dateInsert}</span> &nbsp;&nbsp; | &nbsp;&nbsp; Statut :<span class="text-info">${req.etatReq}</span><p>
-							<form:form class="stdform" action="/ajout_nouveau_request"
+							<form:form class="stdform" action="/traduit_nouveau_request"
 								method="post">
 
 								<c:if test="${class_info!=null}">
@@ -214,7 +210,6 @@
 									</div>
 								</c:if>
 
-
 									<article style="margin: 0px;">
 										<textarea id="code_src" name="code_src">${req.requetteSql}</textarea>
 
@@ -224,15 +219,13 @@
 									<a href="/tester_request?code=${req.codeReq}"
 										class="btn btn-info">Tester</a>
 									<button class="btn btn-primary">Enregistrer</button>
-									<a href="open_accueil_requette" class="btn btn-info">Annuler</a>
+									<a href="admin_requete" class="btn btn-info">Annuler</a>
 								</p>
 
 							</form:form>
 
 						</div>
 					</div>
-
-
 
 				</div>
 				<!--span8-->
@@ -256,6 +249,5 @@
 					keyMap : "emacs"
 				});
 			</script>
-
 
 			<%@include file="pied.jsp"%>
