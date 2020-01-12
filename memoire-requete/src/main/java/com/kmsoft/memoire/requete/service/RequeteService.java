@@ -110,6 +110,20 @@ public class RequeteService {
 		return new Pair<Requete, List<Object[]>>(req, ol);
 
 	}
+	
+	private Triple<Requete, String, List<Object[]>> testerRequeteAdmin(long reqId) {
+		Requete req = this.requeteDao.findOne(reqId, new Requete());
+		List<Object[]> ol = null;
+		if (req != null) {
+			ol = this.execute(req);
+		}
+		Gson convertisseur=new Gson();
+	
+		String resultat_json=convertisseur.toJson(ol);
+		
+		return new Triple<Requete, String, List<Object[]>>(req,resultat_json, ol);
+
+	}
 
 	@SuppressWarnings("unchecked")
 	private List<Object[]> execute(Requete req) {
@@ -215,6 +229,11 @@ public class RequeteService {
 		req.setCodeReq("TESTRQ");
 		req.setRequetteSql("select * from fait_vente");
 		return this.execute(req);
+	}
+
+	public Triple<Requete, String, List<Object[]>> testerRequete(Requete req) {
+		// 
+		return null;
 	}
 
 }

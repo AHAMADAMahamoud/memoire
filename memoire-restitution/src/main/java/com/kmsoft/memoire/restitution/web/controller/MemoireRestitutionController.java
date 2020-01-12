@@ -52,10 +52,11 @@ public class MemoireRestitutionController {
 		}
 
 		String rFr = o.getRequete().getRequetteFr();
+		String graphe=o.getRequete().getResultatGraphe();
 		model.addAttribute("info_req", rFr.startsWith("Aff") ? rFr.replace("Afficher ", "") : rFr);
 		model.addAttribute("culumn_size", ncolonne);
 		model.addAttribute("listresultat", o.getResultat());
-		model.addAttribute("graphe", "chartplace");
+		model.addAttribute("graphe", graphe);
 		model.addAttribute("active_rest", "active");
 		return "rapport";
 	}

@@ -1,5 +1,7 @@
 package com.kmsoft.memoire.restitution.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kmsoft.memoire.requete.model.Requete;
 import com.kmsoft.memoire.requete.service.RequeteService;
+import com.kmsoft.memoire.requete.service.Triple;
 import com.kmsoft.memoire.restitution.web.utils.CodeGenerator;
 
 @Controller
@@ -72,9 +75,13 @@ public class MemoireAdminRequeteController {
 	
 	@GetMapping(value = "/tester_request")
 	public String testerRequete(Model model, @RequestParam(name = "idr") String idr) {
-
+		//code_src
 		Requete req = requeteServ.obtenirRequeteParId(Long.parseLong(idr));
+//		req.setRequetteSql(requetteSql);
+		Triple<Requete, String, List<Object[]>> resultat_test=requeteServ.testerRequete(req);
 		
+		model.addAttribute("jsonREsult", "resultat_json_ici");
+		model.addAttribute("listObjetREsult", "resultat_json_ici");
 		model.addAttribute("msg", "Administration des requêtes");
 		model.addAttribute("req", req);
 		model.addAttribute("listrequete", this.requeteServ.listerRequete());

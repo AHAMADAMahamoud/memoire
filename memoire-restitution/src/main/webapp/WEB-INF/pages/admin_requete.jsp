@@ -68,8 +68,8 @@
 									<span class="label">ISO/CEI 9075:2008 SQL:2008</span>
 									<p>
 										<label>Graphe du resultat</label> <select name="resultat_graph">
-											<option value="bargraph">Bar graphe</option>
-											<option value="chartgraph">Courbe graphe</option>
+											<option value="bargraphe">Bar graphe</option>
+											<option value="courbegraphe">Courbe graphe</option>
 										</select>
 										<input type="hidden" class="span2"  name="idr"value="${req.id}"/>
 									</p>
